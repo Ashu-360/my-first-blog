@@ -1,39 +1,15 @@
+{% extends 'blog/base.html' %}
 
-<html>
-    <head>
-        <title>
-            My First Blog App
-        </title>
-    </head>
-    <body>
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
 
-        <div>
-            <h1>
-                <a href="/">First App</a>
-            </h1>
-            <p>
-                Tetssdkljhkdn kh amshdo  mankjdbbn amnkh  dkahsmd  kadb ba ,jhiqwhiehb bnjkdas mdnkqb
-            </p>
-        </div>
-
-
-        {% for post in posts %}
-            <div>
-                <h2><a href=""> {{post.title}}</a> </h2>
-                <p>{{post.text|linebreaksbr}}</p
-                <p>Written By : {{post.author}}</p>
-                <p>Published On : {{post.published_date}}</p>
-
+            <h1><a href="{% url 'post_detail' pk=post.pk %}"> {{ post.title }} </a></h1>
+            <p>{{ post.text|linebreaksbr }}</p>
+            <p> Written By : {{post.author|title}}</p>
+            <div class="date">
+                <p>Published On : {{ post.published_date }} </p>
             </div>
-        {% endfor %}
-
-        <div>
-
-            <h2><a href="">My second post</a></h2>
-            <p>
-                Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.
-            </p>
-
         </div>
-    </body>
-</html>
+    {% endfor %}
+{% endblock %}
