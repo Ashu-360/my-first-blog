@@ -1,0 +1,13 @@
+<h2>Floor Name are:-</h2>
+{% for floors in floor %}
+    <table>
+        <tr>
+            <td>{{ floors.floor_no }}</td>
+            <td>{{ floors.floor_name }}</td>
+            {% for slot in floors.slots.all %}
+                <td>{{ slot.slot_no }}</td>
+                <!--<td>{{ slot.status }}</td>-->
+            {% endfor %}
+        </tr>
+    </table>
+{% endfor %}

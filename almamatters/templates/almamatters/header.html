@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<div class="header">
+    <div class="h_img">
+        {{ MEDIA_URL }}
+        <img src="{% static 'images/logo.png' %}"></div>
+        <div class="dropdown">
+            <a href="#" class="">Colleges</a>
+                <!--<div class="dropdown-content">-->
+                    <!--{% for college in colleges %}-->
+                        <!--<a href="{% url 'college_page' slug=college.slug %}">{{college.name}}</a>-->
+                    <!--{% endfor %}-->
+                        <!--<a href="{% url 'college_listing' %}">View All</a>-->
+                <!--</div>-->
+            <a href="#">Courses</a>
+            <a href="#">Exams</a>
+            <a href="#">Articles</a>
+        </div>
+
+            <button class="s_btn"><Login/Sign Up</button>
+</div>

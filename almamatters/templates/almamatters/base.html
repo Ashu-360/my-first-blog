@@ -1,0 +1,14 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Welcome to Alma-Matters</title>
+        <link rel="shortcut icon" href="{% static 'images/favicon.png' %}"/>
+        <link rel="stylesheet" href="{% static 'css/almamatters.css' %}" type="text/css">
+    </head>
+    <body>
+        {% include "almamatters/header.html" %}
+        {% block content %}
+        {% endblock %}
+        {% include "almamatters/footer.html" %}
+    </body>
+</html>

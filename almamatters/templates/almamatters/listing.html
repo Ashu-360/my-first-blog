@@ -1,0 +1,39 @@
+{% extends 'almamatters/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<div class="columns">
+        <h1>Colleges</h1>
+
+    <div class="clg_search">
+        <input type="text" placeholder="Search your college...">
+    </div>
+     <div class="clg_filter">
+
+    </div>
+</div>
+<div class="clr"></div>
+
+<div class="col-list-main">
+    {% for college in colleges %}
+    <div class="col-list">
+        <div class="c_logo">
+                <img src="{{ college.logo.url }}">
+        </div>
+        <div class="c_name">
+            <h2>{{ college.name }}</h2>
+        </div>
+        <div class="c_desc">
+            {{ college.about_college|truncatewords:"10" }}
+            <a href="{% url 'college_page' slug=college.slug %}">read more</a>
+        </div>
+        <div class="cweblink">
+            <p><a href="{{college.website}}">Visit Website</a> </p>
+        </div>
+</div>
+     {% endfor %}
+     </div>
+{% endblock %}
+
+
+<div class="clr"></div>
