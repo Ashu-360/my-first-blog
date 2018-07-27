@@ -46,8 +46,9 @@ class Course(models.Model):
 
 class Student(models.Model):
     # user = models.OneToOneField(User)
-    name = models.CharField(max_length=50)
-    email = models.EmailField(max_length=50)
+    # name = models.CharField(max_length=50)
+    # email = models.EmailField(max_length=50)
+    user = models.ForeignKey(User)
     mobile = models.CharField(max_length=15)
     course = models.ForeignKey(Course, null=True, blank=True, on_delete=models.CASCADE)
 
@@ -56,6 +57,7 @@ class Student(models.Model):
 
     def __str__(self):
         return self.name
+
 
 
 

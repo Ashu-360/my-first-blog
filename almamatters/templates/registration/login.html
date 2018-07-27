@@ -1,51 +1,5 @@
-<!--<script>-->
-    <!--$('select[name=category]').change(function(){-->
-    <!--brand_id = $(this).val();-->
-    <!--request_url = '/catlist/';-->
-        <!--$.ajax({-->
-            <!--url: request_url,-->
-            <!--success: function(catdata){-->
-            <!--$.each(catdata, function(index, text){-->
-                <!--$('select[name=courses]').append(-->
-                <!--$('<option></option>').val(index).html(text)-->
-                <!--);-->
-              <!--};-->
-           <!--});-->
-<!--</script>-->
-
-
-<form action="" class="form-handle" method="POST">
-    {% csrf_token %}
-    <p>Username:<input type="text" name="username"></p>
-    <p>Email:<input type="email" name="email"></p>
-    <p>Mobile No:<input type="text" name="mobile"></p>
-<p>
-    <label>Select Category</label>
-      <select name="category">
-        <option value=""> -- Select Category -- </option>
-        {% for name in category %}
-          <option value="{{name}}"> {{name}} </option>
-        {% endfor %}
-       </select>
-</p>
-
-<p>
-     <label>Select Interested Course</label>
-      <select name="course">
-        <option value=""> -- Select Interested Course -- </option>
-        {% for  name in course %}
-          <option value="{{name}}"> {{name}} </option>
-        {% endfor %}
-       </select>
-</p>
-
-
-    <!--<label>Select Interested Course</label>-->
-        <!--<div class="course_list">-->
-            <!--<select name="courses"  class="form-handle">-->
-            <!--</select>-->
-        <!--</div>-->
-
-    <p><input type="submit" name="Submit"></p>
-
+<form action={% url 'login' %} method="post">
+ {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
 </form>

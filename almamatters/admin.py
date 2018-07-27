@@ -20,7 +20,7 @@ class CourseAdmin(admin.ModelAdmin):
 
 class StudentAdmin(admin.ModelAdmin):
     search_fields = ('email',)
-    list_display = ('name', 'email', 'mobile', 'student_category', 'course')
+    list_display = ('user', 'mobile', 'student_category', 'course')
 
     def student_category(self, obj):
         return obj.course.category

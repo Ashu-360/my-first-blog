@@ -46,7 +46,7 @@ class HomePage(TemplateView):
 
 @method_decorator(csrf_exempt, name='dispatch')
 class UserLogin(TemplateView):
-    template_name = 'registration/login.html'
+    template_name = 'registration/register.html'
 
     def post(self, request, *args, **kwargs):
         userobj = None
@@ -64,12 +64,12 @@ class UserLogin(TemplateView):
                                              mobile=mobile,
                                              course=course)
 
-        return render(request, "registration/login.html", {'user': userobj,
+        return render(request, "registration/register.html", {'user': userobj,
                                                            'category': Category.objects.all(),
                                                            'course': Course.objects.all()})
 
     def get(self, request, *args, **kwargs):
-        return render(request, "registration/login.html", {'category': Category.objects.all(),
+        return render(request, "registration/register.html", {'category': Category.objects.all(),
                                                            'course': Course.objects.all()})
 
 
