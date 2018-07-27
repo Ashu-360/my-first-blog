@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.dispatch import receiver
 
 
 class College(models.Model):
@@ -48,15 +49,27 @@ class Student(models.Model):
     # user = models.OneToOneField(User)
     # name = models.CharField(max_length=50)
     # email = models.EmailField(max_length=50)
-    user = models.ForeignKey(User)
-    mobile = models.CharField(max_length=15)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    mobile = models.IntegerField(null=True, blank=True)
+    location = models.CharField(max_length=30, blank=True)
     course = models.ForeignKey(Course, null=True, blank=True, on_delete=models.CASCADE)
+
+
+# @receiver(post_save, sender=User)
+# def create_user_profile(sender, instance, created, **kwargs):
+#     if created:
+#         Student.objects.create(user=instance)
+#
+#
+# @receiver(post_save, sender=User)
+# def save_user_profile(sender, instance, **kwargs):
+#     instance.profile.save()
 
     class Meta:
         verbose_name_plural = 'students'
 
     def __str__(self):
-        return self.name
+        return self.user
 
 
 

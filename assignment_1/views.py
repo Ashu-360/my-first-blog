@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+
+from almamatters.models import Student
 from .models import form_data
 
 
@@ -35,3 +37,5 @@ def form_handle(request):
         #
 
     return render(request, "assignment_1/form_assign.html", {'user': user_obj})
+
+

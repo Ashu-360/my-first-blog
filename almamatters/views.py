@@ -1,9 +1,12 @@
+# from django.contrib.auth import forms
+# from django.forms import forms
+from django.forms.models import ModelForm
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
 
-from almamatters import forms
+# from almamatters import forms
 from almamatters.models import College, Footer, Student, Category, Course
 
 
@@ -44,6 +47,12 @@ class HomePage(TemplateView):
     pass
 
 
+class StudentForm(ModelForm):
+    class Meta:
+        model = Student
+        fields = ('first_name', 'last_name', 'email')
+
+
 @method_decorator(csrf_exempt, name='dispatch')
 class UserLogin(TemplateView):
     template_name = 'registration/register.html'
@@ -69,14 +78,7 @@ class UserLogin(TemplateView):
                                                            'course': Course.objects.all()})
 
     def get(self, request, *args, **kwargs):
-        return render(request, "registration/register.html", {'category': Category.objects.all(),
-                                                           'course': Course.objects.all()})
-
-
-
-
-
-
-
+        form = StudentForm(request.user)
+        return render(request, "registration/register.html", {'form': form})
 
 
